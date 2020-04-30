@@ -4,7 +4,7 @@ This repository is my journey towards becoming a Java FullStack Developer.
 
 # _Topics Covered_
 
-* Hello World - Because this is where it all starts!
+* **Hello World** - Because this is where it all starts!
 * Data Types, Variables, Arrays, Multidimensional Arrays, Getting User Input
 * Math Operators, Increment Operators, Logical Operators, Conditional Operators
 * If Statement, Switch Statement, For Loops While Loop Do while Loops
