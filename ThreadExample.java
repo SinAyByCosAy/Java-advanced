@@ -1,5 +1,7 @@
 package tech.codingclub;
 
+import com.sun.xml.internal.bind.v2.runtime.output.StAXExStreamWriterOutput;
+
 import java.util.Scanner;
 
 public class ThreadExample extends Thread {
@@ -30,17 +32,16 @@ public class ThreadExample extends Thread {
     }
 
     public static void main(String[] args) {
+        TaskManager taskManager = new TaskManager(100);
 
-        ThreadExample thread1 = new ThreadExample("Thread_A", 0, 500);
-        ThreadExample thread2 = new ThreadExample("Thread_B",0, 1000);
-        ThreadExample thread3 = new ThreadExample("Thread_C",0, 2000);
+        for(int i=0;i<10000;i++){
+            RunnableExample runnableExample = new RunnableExample("Thread -"+i, 0 , 100+i);
+            taskManager.waitTillQueueIsFreeAndAddTask(runnableExample);
+            System.out.println("$$$$$$$$$" + i );
+        }
 
-        thread1.start();
-        thread2.start();
-        thread3.start();
+        System.out.println("###########" );
 
-        Scanner sc = new Scanner(System.in);
-        int x = sc.nextInt();
 
 //        System.out.println(thread1.counter);
 //        System.out.println(thread2.counter);
