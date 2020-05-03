@@ -2,10 +2,7 @@ package tech.codingclub;
 
 import sun.nio.ch.sctp.SctpNet;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -110,5 +107,26 @@ public class FileUtility {
             String data = i + "";
             appendToFile(nameOfWriteFile, data);
         }
+    }
+
+    public static ArrayList<String> readFileAsList(String fileName) {
+        Scanner scanner = null;
+
+        ArrayList<String> strings = new ArrayList<String>();
+        try{
+            File file = new File(fileName);
+            scanner = new Scanner(file);
+            while(scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                strings.add(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }finally {
+            if (scanner != null) {
+                scanner.close();
+            }
+        }
+        return strings;
     }
 }
